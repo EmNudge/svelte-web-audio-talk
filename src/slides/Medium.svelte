@@ -6,10 +6,6 @@
 
   export let step = 0;
 
-  $: {
-    console.log(step);
-  }
-
   const points = [
     "Mature UI Toolkit",
     "Small Bundle Size",

@@ -1,15 +1,15 @@
 <script>
   import { onMount } from "svelte";
-  import { Canvas, line, activeNode } from "../utils/canvas.js";
+  import { Canvas, line, activeNode, canvasStore } from "../utils/canvas.js";
 
-  let canvasEl, canvasContainer;
+  let canvasContainer;
   let canvas;
 
   onMount(() => {
     const { width, height } = window.getComputedStyle(canvasContainer);
-    canvasEl.width = parseInt(width);
-    canvasEl.height = parseInt(height);
-    canvas = new Canvas(canvasEl);
+    $canvasStore.width = parseInt(width);
+    $canvasStore.height = parseInt(height);
+    canvas = new Canvas($canvasStore);
   });
 
   const getPos = e => ({ x: e.offsetX, y: e.offsetY });
@@ -33,7 +33,7 @@
 
     let index = 0;
     for (const [i, node] of $line.nodes.entries()) {
-      if (node.id !== $activeNode) return;
+      if (node.id !== $activeNode) continue;
       index = i;
     }
 
@@ -63,7 +63,7 @@
 
 <div bind:this={canvasContainer}>
   <canvas
-    bind:this={canvasEl}
+    bind:this={$canvasStore}
     on:mousedown={handleClick}
     on:mousemove={handleHover} />
 </div>

@@ -2,6 +2,7 @@ import { writable, get } from 'svelte/store';
 
 export const line = writable({ hue: 0, nodes: [] });
 export const activeNode = writable(null);
+export const canvasStore = writable(null);
 
 const NODE_SIZE = 8;
 const LINE_WIDTH = 4;
@@ -109,9 +110,12 @@ export class Canvas {
       this.ctx.stroke();
     }
   
+    let hasHovered = false;
     // draw nodes
     for (const node of nodes) {
       const isHovering = this.getDist(this.mousePos, node) < NODE_SIZE;
+      if (isHovering) hasHovered = true;
+
       const isSelected = node.id === activeId;
     
       this.ctx.beginPath();
@@ -124,5 +128,7 @@ export class Canvas {
       this.ctx.arc(node.x, node.y, NODE_SIZE/2, 0, 2 * Math.PI);
       this.ctx.fill();
     }
+
+    get(canvasStore).style.cursor = hasHovered ? 'pointer' : '';
   }
 }
