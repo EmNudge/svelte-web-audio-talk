@@ -1,0 +1,69 @@
+<script>
+  import { onMount } from "svelte";
+  import { Canvas, line, activeNode } from "../utils/canvas.js";
+
+  let canvasEl, canvasContainer;
+  let canvas;
+
+  onMount(() => {
+    const { width, height } = window.getComputedStyle(canvasContainer);
+    canvasEl.width = parseInt(width);
+    canvasEl.height = parseInt(height);
+    canvas = new Canvas(canvasEl);
+  });
+
+  const getPos = e => ({ x: e.offsetX, y: e.offsetY });
+
+  function handleClick(e) {
+    canvas.onClick(getPos(e));
+    canvas.draw();
+  }
+  function handleHover(e) {
+    canvas.handleHover(getPos(e));
+    canvas.draw();
+  }
+
+  function handleMouseUp(e) {
+    canvas.onRelease();
+  }
+
+  function handleKeyDown(e) {
+    const isDelete = ['Delete', 'Backspace'].includes(e.key)
+    if (!isDelete || !$activeNode) return;
+
+    let index = 0;
+    for (const [i, node] of $line.nodes.entries()) {
+      if (node.id !== $activeNode) return;
+      index = i;
+    }
+
+    // either the one after or before
+    const nextNode = $line.nodes[index + 1] || $line.nodes[index - 1];
+
+    // if this is the last node, set the new active to null
+    $activeNode = nextNode ? nextNode.id : null;
+
+    // remove active node
+    $line.nodes.splice(index, 1);
+    $line = $line;
+    
+    canvas.draw();
+  }
+</script>
+
+<style>
+  canvas {
+    box-shadow: inset 1px 1px 4px 0px #00000012;
+    background: #ededed59;
+    min-height: 300px;
+  }
+</style>
+
+<svelte:window on:keydown={handleKeyDown} on:mouseup={handleMouseUp} />
+
+<div bind:this={canvasContainer}>
+  <canvas
+    bind:this={canvasEl}
+    on:mousedown={handleClick}
+    on:mousemove={handleHover} />
+</div>

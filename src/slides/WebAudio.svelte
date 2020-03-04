@@ -87,7 +87,7 @@
 </style>
 
 <div>
-  <h1>Web Audio</h1>
+  <h1>Web Audio API</h1>
   
   <p>"The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more."</p>
   <p>-MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></p>

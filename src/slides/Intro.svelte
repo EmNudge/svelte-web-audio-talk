@@ -14,7 +14,7 @@
   $: activePoints = points.slice(0, step - 2);
 
   // this lets us move to the next slide
-  $: if (step > 4) dispatch('done');
+  $: if (step > 5) dispatch('done');
 </script>
 
 <style>
@@ -79,7 +79,7 @@
       <ul>
         {#each activePoints as point}
           <li>{point.title}</li>
-          <ul>
+          <ul in:fly|local="{{ x: -50, duration: 200 }}">
             <li>{point.desc}</li>
           </ul>
         {/each}

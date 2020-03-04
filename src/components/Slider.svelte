@@ -43,10 +43,6 @@
     const { steps } = slides[activeSlideNum];
     slideStep = steps ? steps - 1 : 0;
   }
-
-  function stopStep() {
-    shouldStep = false;
-  }
 </script>
 
 <style>
@@ -61,5 +57,5 @@
 <svelte:window on:keydown={handleKeyDown} />
 
 <main>
-  <svelte:component this={component} step={slideStep} on:done={stopStep} />
+  <svelte:component this={component} step={slideStep} on:done={moveSlide} />
 </main>

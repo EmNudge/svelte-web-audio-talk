@@ -15,12 +15,13 @@
     "Small Bundle Size",
     "No Active Download",
     "(non-blocking) Available APIs",
-    "Write Once, Run Anywhere™"
+    "Write Once, Run Anywhere™",
+    "<b>Java</b>Script"
   ];
   $: activePoints = points.slice(0, step);
 
   // this lets us move to the next slide
-  $: if (step > 4) dispatch("done");
+  $: if (step > 6) dispatch("done");
 </script>
 
 <style>
@@ -38,6 +39,9 @@
     font-size: 1.4em;
     width: 100%;
   }
+  li {
+    padding: 5px;
+  }
 </style>
 
 <div>
@@ -50,7 +54,7 @@
   <section>
     <ul>
       {#each activePoints as point}
-        <li in:fade|local>{point}</li>
+        <li in:fade|local={{ duration: 200 }}>{@html point}</li>
       {/each}
     </ul>
   </section>
