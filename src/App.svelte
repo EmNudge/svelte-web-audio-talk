@@ -9,6 +9,7 @@
 	import Canvas2 from './slides/Canvas2.svelte'
 	import Spectrogram1 from './slides/Spectrogram1.svelte'
 	import Spectrogram2 from './slides/Spectrogram2.svelte'
+	import Replicator from './slides/Replicator.svelte'
 
   let slides = [
 		{ component: Intro, shouldStep: true },
@@ -20,6 +21,7 @@
 		{ component: Spectrogram2 },
 		{ component: Canvas },
 		{ component: Canvas2 },
+		{ component: Replicator },
 	];
 </script>
 
