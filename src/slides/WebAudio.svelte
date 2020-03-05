@@ -47,6 +47,9 @@
 
     oscillators = oscillators.filter((_, i) => i !== index);
   }
+
+  new Image().src = '/images/audio-context_mdn.png';
+  new Image().src = '/images/audio-context_html5rocks.png';
 </script>
 
 <style>
@@ -103,14 +106,20 @@
 <div>
   <h1>Web Audio API</h1>
   
-  <p>"The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more."</p>
-  <p>-MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></p>
+  {#if step < 2 }
+    <p>"The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more."</p>
+    <p>-MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></p>
 
-  {#if step > 0}
-    <div class="mdn">
-      <img src="/images/audio-context_mdn.png" alt="audio context diagram">
-      <small>Image Credit: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">MDN</a></small>
-    </div>
+    {#if step > 0}
+      <div class="mdn">
+        <img src="/images/audio-context_mdn.png" alt="audio context diagram">
+        <small>Image Credit: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">MDN</a></small>
+      </div>
+      <div class="mdn">
+        <img src="/images/audio-context_html5rocks.png" alt="audio context diagram 2">
+        <small>Image Credit: <a href="https://www.html5rocks.com/en/tutorials/webaudio/intro/">html5rocks</a></small>
+      </div>
+    {/if}
   {/if}
 
   {#if step > 1}

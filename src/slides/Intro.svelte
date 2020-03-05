@@ -15,6 +15,9 @@
 
   // this lets us move to the next slide
   $: if (step > 5) dispatch('done');
+
+  new Image().src = '/images/calvin.png';
+  new Image().src = '/images/temp.png';
 </script>
 
 <style>

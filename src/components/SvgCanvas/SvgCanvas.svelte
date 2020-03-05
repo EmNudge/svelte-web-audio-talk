@@ -59,6 +59,7 @@
 
 <style>
   svg {
+    box-shadow: inset 1px 1px 4px 0px #00000012;
     background: #eeea;
     width: 100%;
     height: 100%;

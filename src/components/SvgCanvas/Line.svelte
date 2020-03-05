@@ -1,8 +1,6 @@
 <script>
-  export let active = false;
   export let nodes;
   export let hue = 0;
-  export let id = ''
 
   import Node from "./Node.svelte";
   import { activeNodeStore } from "./utils.js";
@@ -29,19 +27,13 @@
 </script>
 
 <style>
-  g:not(.active) {
-    opacity: 0.8;
-  }
   line {
     stroke: hsl(var(--line-hue, 0), 50%, 65%);
     stroke-width: 3;
   }
-  line.active {
-    z-index: 3;
-  }
 </style>
 
-<g style="--line-hue: {hue}" class:active {id}>
+<g style="--line-hue: {hue}">
   {#each lines as line}
     <line {...line} />
   {/each}
