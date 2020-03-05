@@ -1,0 +1,38 @@
+
+<svelte:window on:mouseup={handleMouseUp} on:keydown={handleKeyDown} />
+
+<div class="canvas">
+	<svg
+		bind:this={canvasEl}
+		on:contextmenu|preventDefault
+		on:mousedown={handleClick}
+		on:mousemove={handleHover}>
+
+		<Line {...$lineStore} />
+
+	</svg>
+</div>
+
+
+<g style="--line-hue: {hue}">
+	{#each lines as line}
+		<line {...line} />
+	{/each}
+	{#each nodes as { x, y, id }}
+		<Node
+			x="{x * 100}%"
+			y="{y * 100}%"
+			on:mousedown={() => onClick(id)}
+			isActive={$activeNodeStore === id} />
+	{/each}
+</g>
+
+
+<circle
+	cx={x}
+	cy={y}
+	r={size}
+	stroke-width="3"
+	fill="white"
+	class:active={isActive}
+	on:mousedown />
