@@ -1,6 +1,8 @@
 <script>
   import { onDestroy } from 'svelte';
 
+  export let step = 0;
+
   let audioContext, gainNode, volume;
   let oscillators = [];
 
@@ -84,6 +86,18 @@
   .close:hover {
     background: #ddd;
   }
+
+  .mdn {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    text-align: left;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .mdn img {
+    width: 400px;
+  }
 </style>
 
 <div>
@@ -92,8 +106,17 @@
   <p>"The Web Audio API provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more."</p>
   <p>-MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></p>
 
-  <br />
-  <button on:click={createContext}>Start Audio Context</button>
+  {#if step > 0}
+    <div class="mdn">
+      <img src="/images/audio-context_mdn.png" alt="audio context diagram">
+      <small>Image Credit: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">MDN</a></small>
+    </div>
+  {/if}
+
+  {#if step > 1}
+    <br />
+    <button on:click={createContext}>Start Audio Context</button>
+  {/if}
 
 
   {#if audioContext}

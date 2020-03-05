@@ -12,7 +12,7 @@
 		{ component: Intro, shouldStep: true },
 		{ component: Medium, shouldStep: true },
 		{ component: Phonetics },
-		{ component: WebAudio },
+		{ component: WebAudio, steps: 2 },
 		{ component: WebAudioLing },
 		{ component: Canvas },
 		{ component: Canvas2 },
