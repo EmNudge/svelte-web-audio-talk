@@ -10,6 +10,7 @@
     $canvasStore.width = parseInt(width);
     $canvasStore.height = parseInt(height);
     canvas = new Canvas($canvasStore);
+    canvas.draw();
   });
 
   const getPos = e => ({ x: e.offsetX, y: e.offsetY });

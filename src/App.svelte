@@ -6,6 +6,7 @@
 	import WebAudio from './slides/WebAudio.svelte'
 	import WebAudioLing from './slides/WebAudioLing.svelte'
 	import Canvas from './slides/Canvas.svelte'
+	import Canvas2 from './slides/Canvas2.svelte'
 
   let slides = [
 		{ component: Intro, shouldStep: true },
@@ -14,6 +15,7 @@
 		{ component: WebAudio },
 		{ component: WebAudioLing },
 		{ component: Canvas },
+		{ component: Canvas2 },
 	];
 </script>
 
