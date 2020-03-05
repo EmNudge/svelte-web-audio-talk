@@ -1,6 +1,7 @@
 <script>
   import { fly, fade } from 'svelte/transition';
   import { createEventDispatcher } from 'svelte';
+  import WordIntro from '../components/WordIntro.svelte'
 
   const dispatch = createEventDispatcher()
   
@@ -57,7 +58,9 @@
 </style>
 
 <div>
-  <h1>Hello! My name is Calvin</h1>
+  <h1>
+    <WordIntro text='Hello! My name is Calvin' />
+  </h1>
 
   {#if step > 0}
     <div class=distinction>

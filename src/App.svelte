@@ -1,5 +1,6 @@
 <script>
   import Slider from "./components/Slider.svelte";
+	import Title from './slides/Title.svelte';
 	import Intro from './slides/Intro.svelte';
 	import Medium from './slides/Medium.svelte';
 	import Phonetics from './slides/Phonetics.svelte'
@@ -12,6 +13,7 @@
 	import Replicator from './slides/Replicator.svelte'
 
   let slides = [
+		{ component: Title },
 		{ component: Intro, shouldStep: true },
 		// { component: Medium, shouldStep: true }, // I don't think this is relevant.
 		{ component: Phonetics },
